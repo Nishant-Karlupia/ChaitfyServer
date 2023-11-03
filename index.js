@@ -5,6 +5,7 @@ const userRoutes=require("./routes/userRoutes");
 const messagesRoute=require("./routes/messagesRoute");
 const socket=require("socket.io");
 const app=express();
+const PORT=process.env.PORT || 5000 
 
 require("dotenv").config();
 
