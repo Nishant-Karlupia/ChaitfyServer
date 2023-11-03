@@ -34,7 +34,7 @@ const server=app.listen(process.env.PORT,()=>{
 
 const io=socket(server,{
     cors:{
-        origin:"https://chatifyserver-qv99.onrender.com",
+        origin:"https://chatifyuser.netlify.app",
         credentials:true,
     },
 })
