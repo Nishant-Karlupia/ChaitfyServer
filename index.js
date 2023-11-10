@@ -5,13 +5,17 @@ const userRoutes=require("./routes/userRoutes");
 const messagesRoute=require("./routes/messagesRoute");
 const socket=require("socket.io");
 const app=express();
-const PORT=process.env.PORT || 5000 
-
 require("dotenv").config();
+
+const PORT=process.env.PORT || 5000 
+const ORIGIN=process.env.ORIGIN;
+
+console.log(ORIGIN);
+
 
 app.use(cors());
 app.use(cors({
-    origin: 'https://chatifyuser.netlify.app',
+    origin:ORIGIN,
 }));
 app.use(express.json());
 
@@ -28,13 +32,13 @@ mongoose.connect(process.env.MONGO_URL,{
     console.log(err.message)
 })
 
-const server=app.listen(process.env.PORT,()=>{
-    console.log(`Server started on PORT ${process.env.PORT}`);
+const server=app.listen(PORT,()=>{
+    console.log(`Server started on PORT ${PORT}`);
 });
 
 const io=socket(server,{
     cors:{
-        origin:"https://chatifyuser.netlify.app",
+        origin:ORIGIN,
         credentials:true,
     },
 })
